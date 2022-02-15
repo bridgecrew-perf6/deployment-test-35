@@ -1,0 +1,35 @@
+.profileImg {
+  border-radius: 30px;
+  margin-left: 5px;
+  width: 45;
+  height: 45;
+}
+.buttons-container {
+  vertical-align: middle;
+  margin: auto;
+  -webkit-box-shadow: 3px 8px 44px -10px rgba(75, 75, 82, 0.28);
+  -moz-box-shadow: 3px 8px 44px -10px rgba(75, 75, 82, 0.28);
+  box-shadow: 3px 8px 44px -10px rgba(75, 75, 82, 0.28);
+  padding: 30px 15px;
+}
+.buttons-box a:nth-last-of-type(2) {
+  margin: 10px 0px;
+}
+.buttons-box {
+  margin: 60px auto;
+}
+
+.home .buttons-box {
+  width: 30%;
+  margin-left: 35%;
+}
+
+.logo-div {
+  margin: auto;
+}
+.ui.button {
+  font-size: 1.3rem !important;
+}
+.img-logo {
+  width: 200px;
+}

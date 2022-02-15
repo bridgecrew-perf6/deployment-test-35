@@ -1,0 +1,34 @@
+{% extends "template.njk" %} {% block content %}
+<div class="box-container">
+  <div class="container text-center" style="margin: 50px auto;">
+    {% if error %}
+    <div class="alert alert-danger" role="alert">
+      {{ error }}
+    </div>
+    {% endif %}
+    {% if user %}
+    <div class="alert alert-danger" role="alert">
+      {{ user }}
+    </div>
+    {% endif %}
+    <div class="row login-row">
+      <div class="col-lg-4 buttons-container">
+        <div class="logo-div">
+          <img
+            src="/images/app_logo.png"
+            alt="Practifi logo"
+            style="width: 50%; margin-left:10%"
+          />
+        </div>
+        <div class="buttons-box">
+          <h4>Login in with</h4>
+          <a class="ui linkedin button btn-block" href="/auth/Salesforce">
+            <i class="fab fa-salesforce"></i>
+            Salesforce
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
