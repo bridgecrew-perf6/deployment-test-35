@@ -23,7 +23,7 @@
           </div>
           <div class="buttons-box">
             <h4>Login in with</h4>
-            <a class="ui linkedin button btn-block" href="/auth/salesforce?type=login">
+            <a class="ui linkedin button btn-block" href="#">
               <i class="fab fa-salesforce"></i>
             Salesforce
           </a>
@@ -41,7 +41,7 @@
               <div class="modal-content">
                 <span class="close">&times;</span>
                 <form method="post" action="/auth/salesforce" >
-                <input type="text" placeholder="SFDX Auth URL" name="authURL" required></input>
+                <input id="input_text" type="text" placeholder="SFDX Auth URL" name="authURL" required></input>
                  <input type="submit" value="Submit">
                 </form>
               </div>
