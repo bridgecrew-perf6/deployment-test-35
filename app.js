@@ -8,8 +8,8 @@ const nunjucks = require('nunjucks');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const loginRouter = require('./routes/login');
-const { loginSFDX } = require('./src/login');
-
+const authRouter = require('./routes/auth');
+const authlogoutRouter = require('./routes/authlogout');
 const app = express();
 
 // view engine setup
@@ -29,30 +29,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', loginRouter);
+app.use('/auth/salesforce', authRouter)
+app.use('/auth/salesforcelogout', authlogoutRouter)
 
-app.get(
-  '/auth/salesforce', async (req,res)=>{
-    let user = await loginSFDX('login');
-    let renderString = `home`
-    if(user.code && user.code == 1){
-      renderString = `login`;
-      user = `Req Timeout. Please try again`
-    }
-    res.render(renderString, {
-      user: user
-    })
-  });
-app.get(
-  '/auth/Salesforcelogout', async (req,res)=>{
-    const user = await loginSFDX('logout');
-    res.render('login', {
-      user: user
-    })
-  });
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
+
+app.use(express.urlencoded({
+  extended: true
+}))
 
 // error handler
 app.use(function(err, req, res, next) {

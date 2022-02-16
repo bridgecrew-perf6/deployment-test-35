@@ -1,5 +1,8 @@
 const shell = require("shelljs");
 const kill = require('kill-port')
+var jsforce = require('jsforce');
+var conn = new jsforce.Connection();
+const fs = require('fs');
 
 async function loginSFDX(context) {
   console.log(context)
@@ -21,6 +24,12 @@ async function loginSFDX(context) {
   }
 }
 
+async function loginUsingSFDXAuthUrl(sfdxAuthUrl) {
+  fs.writeFileSync('./sfdxAuthUrl.txt', sfdxAuthUrl);
+  let res = shell.exec(`sfdx force:auth:sfdxurl:store -f ./sfdxAuthUrl.txt -a scratchOrg`)
+  return res;
+}
+
 module.exports = {
-  loginSFDX,
+  loginSFDX,loginUsingSFDXAuthUrl
 };
