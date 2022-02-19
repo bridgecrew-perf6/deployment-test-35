@@ -28,8 +28,8 @@ async function loginUsingSFDXAuthUrl(sfdxAuthUrl) {
   return res;
 }
 
-async function loginUsingAccessToken(accessToken, instanceUrl) {
-  let res = shell.exec(`echo ${accessToken} | sfdx force:auth:accesstoken:store --instanceurl ${instanceUrl} -p -a scratchOrg`)
+async function loginUsingAccessToken(token, instanceUrl) {
+  let res = shell.echo(token).exec(`sfdx force:auth:accesstoken:store --instanceurl ${instanceUrl} -p -a scratchOrg`);
   return res;
 }
 
