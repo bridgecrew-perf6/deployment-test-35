@@ -25,6 +25,7 @@ router.get("/", function(req, res) {
     // Save them to establish connection next time.
     console.log("User ID: " + userInfo.id);
     console.log("Org ID: " + userInfo.organizationId);
+    const token = conn.accessToken;
     // ...
     let renderString = "home";
     let user = "";
@@ -33,7 +34,7 @@ router.get("/", function(req, res) {
       user = `Already logged in. ${req.session.userid}`;
     } else {
       user = await login.loginUsingAccessToken(
-        conn.accessToken,
+        token,
         conn.instanceUrl
       );
     }
