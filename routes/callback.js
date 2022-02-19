@@ -23,9 +23,6 @@ router.get("/", function(req, res) {
     }
     // Now you can get the access token, refresh token, and instance URL information.
     // Save them to establish connection next time.
-    console.log(conn.accessToken);
-    console.log(conn.refreshToken);
-    console.log(conn.instanceUrl);
     console.log("User ID: " + userInfo.id);
     console.log("Org ID: " + userInfo.organizationId);
     // ...
