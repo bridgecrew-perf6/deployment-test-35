@@ -28,11 +28,14 @@ async function loginUsingSFDXAuthUrl(sfdxAuthUrl) {
   return res;
 }
 
-async function loginUsingAccessToken(key, instanceUrl) {
-  let res = shell.exec(`echo ${key} | sfdx force:auth:accesstoken:store --instanceurl ${instanceUrl} -p -a scratchOrg`);
+async function loginUsingRefreshToken(refreshToken, instanceUrl) {
+  let instanceUrlCrop = instanceUrl.split('/');
+  console.log(instanceUrlCrop);
+  let authUrlFromRefresthToken = `force://${process.env.CLIENT_ID}:${process.env.CLIENT_SECRET}:${refreshToken}@${instanceUrlCrop[2]}`;
+  let res = await loginUsingSFDXAuthUrl(authUrlFromRefresthToken)
   return res;
 }
 
 module.exports = {
-  loginSFDX, loginUsingSFDXAuthUrl, loginUsingAccessToken
+  loginSFDX, loginUsingSFDXAuthUrl, loginUsingRefreshToken
 };

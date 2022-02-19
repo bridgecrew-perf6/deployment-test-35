@@ -17,7 +17,7 @@ var oauth2 = new jsforce.OAuth2({
 //
 
 router.get('/', function(req, res, next) {
-  res.redirect(oauth2.getAuthorizationUrl({ scope : 'full' }));
+  res.redirect(oauth2.getAuthorizationUrl({ scope : 'full refresh_token offline_access' }));
 });
 
 module.exports = router;
