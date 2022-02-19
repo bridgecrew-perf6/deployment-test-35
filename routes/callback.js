@@ -25,29 +25,30 @@ router.get("/", function(req, res) {
     // Save them to establish connection next time.
     console.log("User ID: " + userInfo.id);
     console.log("Org ID: " + userInfo.organizationId);
-    const token = conn.accessToken;
+    console.log("Access Token: " + conn.accessToken);
+    res.send('Success')
     // ...
-    let renderString = "home";
-    let user = "";
-    if (req.session.userid) {
-      renderString = "home";
-      user = `Already logged in. ${req.session.userid}`;
-    } else {
-      user = await login.loginUsingAccessToken(
-        token,
-        conn.instanceUrl
-      );
-    }
-    if (user.code && user.code == 1) {
-      renderString = `login`;
-      user = `Please try again. ${user.stderr}`;
-    }
-    if (user.code == 0) {
-      req.session.userid = user;
-    }
-    res.render(renderString, {
-      user: user,
-    });
+    // let renderString = "home";
+    // let user = "";
+    // if (req.session.userid) {
+    //   renderString = "home";
+    //   user = `Already logged in. ${req.session.userid}`;
+    // } else {
+    //   user = await login.loginUsingAccessToken(
+    //     token,
+    //     conn.instanceUrl
+    //   );
+    // }
+    // if (user.code && user.code == 1) {
+    //   renderString = `login`;
+    //   user = `Please try again. ${user.stderr}`;
+    // }
+    // if (user.code == 0) {
+    //   req.session.userid = user;
+    // }
+    // res.render(renderString, {
+    //   user: user,
+    // });
   });
 });
 
